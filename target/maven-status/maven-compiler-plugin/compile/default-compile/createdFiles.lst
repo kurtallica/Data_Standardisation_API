@@ -1,0 +1,9 @@
+kurt\project\standardise\Controllers\StandardisationController.class
+kurt\project\standardise\Standardisers\StandardiserSuper.class
+kurt\project\standardise\Services\StandardisationService.class
+kurt\project\standardise\Standardisers\RemovePunctuation.class
+kurt\project\standardise\Application.class
+kurt\project\standardise\Standardisers\ReplaceAccentedCharacters.class
+kurt\project\standardise\Standardisers\ToLowerCase.class
+kurt\project\standardise\Standardisers\ToUpperCase.class
+kurt\project\standardise\Standardisers\RemoveNumbers.class

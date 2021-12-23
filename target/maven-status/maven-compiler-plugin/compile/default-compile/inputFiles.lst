@@ -1,0 +1,9 @@
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\ReplaceAccentedCharacters.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\ToUpperCase.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Services\StandardisationService.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\RemovePunctuation.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Controllers\StandardisationController.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\StandardiserSuper.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\ToLowerCase.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Standardisers\RemoveNumbers.java
+D:\IntelliJ IDEA Workspace\Data Standardisation API\src\main\java\kurt\project\standardise\Application.java
