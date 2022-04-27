@@ -67,7 +67,7 @@ public class StandardisationService {
                     }
                 }
                 if (!stnFound) {
-                    throw new Exception("Standardiser \"" + "sni" + "\" not found.");
+                    throw new Exception("Standardiser \"" + sni + "\" not found.");
                 }
             }
         }

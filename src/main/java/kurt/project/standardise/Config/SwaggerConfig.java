@@ -27,8 +27,7 @@ public class SwaggerConfig {
     private ApiInfo getApiInfo() {
         Contact contact = new Contact(
                 "Kurtis Fleming",
-                "https://www.linkedin.com/in/kurtfleming\n"
-                        + "https://github.com/kurtallica",
+                "https://www.linkedin.com/in/kurtfleming",
                 "kurtallica@hotmail.com"
                 );
         return new ApiInfo(

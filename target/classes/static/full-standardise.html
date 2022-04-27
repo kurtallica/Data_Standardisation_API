@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Data Standardisation API</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <script src="standardise.js"></script>
+    <link rel="stylesheet" href="standardise.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class=heading>
+        <img src="resources/cbc-64px.png" alt="CBC logo">
+        <h1>Data Standardisation API</h1>
+    </div>
+    <div class=aboutHistoryButton>
+        <button class="about" type="button" onclick="getAboutContactInfo()" value="">About</button>
+        <button class="history" type="button" onclick="loadAuditPage()" value="">History</button>
+        <button type="button" class=return-button id="returnbutton" onclick="history.back()">Return</button>
+    </div>
+    <hr>
+    <div class="rawData">
+        <h3>Raw Data</h3>
+        <div class=subRawData>
+            <label for="rawDataText"></label>
+            <textarea class="rawDataText" name="rawDataText" id="rawDataText" cols="30" rows="10"
+                placeholder="Input raw data here:"></textarea>
+        </div>
+    </div>
+    <div class="data-standardisers">
+        <h3 class="standardiser-info-head">Standardisers</h3>
+        <form class="standardiser-info" id="standardiserInfo">
+            <fieldset class="stnd-info-fieldset">
+                <legend>Standardisers To Be Applied</legend>
+                <ul class="standardiser-list" id="standardiserList">
+            </fieldset>
+            <button type="button" id="apply" onclick="fullStandardise();"> Apply</button>
+            <button type="button" onclick="resetPage()"> Reset</button>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <div class=standardised>
+        <h3>Standardised Data</h3>
+        <div class=standardisedData>
+            <label for="standardisedData"></label>
+            <textarea readonly class=standardisedDataBox name="standardisedDataBox" id="standardisedDataBox" cols="30"
+                rows="10" placeholder="Result will display here:"></textarea>
+        </div>
+    </div>
+    <h3 class=standardiser-applied-head>Standardisers Applied</h3>
+    <form class="standardisersApplied" id="stnd-app-form">
+        <fieldset class="stnd-app-fieldset">
+            <legend>Standardisers Applied</legend>
+            <section>
+                <ul class="standardiser-list" id="standardiserList">
+                </ul>
+            </section>
+        </fieldset>
+    </form>
+    <hr>
+</body>
+
+</html>

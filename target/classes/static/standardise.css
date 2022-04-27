@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+  }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0 ;
+    padding:0;
+}
+img{
+    float: left;
+    margin-left: 15px;
+    margin-top: -.5%;
+}
+h1{
+    color: rgb(155, 93, 220);
+    font-size: 48px;
+    background-color: white;
+    margin-left: 5%;
+}
+hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: 2%;
+    margin-right: 2%;
+    }
+.aboutHistoryButton{
+    display: inline-block;
+    position:sticky;
+    margin-left: 89%;
+    bottom: 95%;
+    margin-bottom: -10%;
+}
+.about, .history, .return-button{
+    cursor: pointer;
+    background-color: #0f2320;
+    color: #8dff1f;
+    border: 3px #101820;
+    width: 130px;
+    height: 45px;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 20px;
+    border-radius: 3px;
+    transition-duration: 0.1ms;
+}
+.about:hover, .history:hover, .return-button:hover{
+    background-color: #0f2320;
+    color: white;
+}
+.rawData, .standardised {
+    width: 65%;
+display: inline-block;
+padding: 10px;
+}
+.rawDataText, .standardisedDataBox{
+    height: 10%;
+    width: 75%;
+    background-image: linear-gradient(white,#e6e8eb);
+    border-color:  rgba(128, 128, 128, 0.300);
+    border-width: 1px;
+    border-radius: 8px;
+    -moz-border-radius: 8px; /*CSS3 Firefox functionality*/
+    -webkit-border-radius: 8px; /*CSS3 Safari functionality*/ 
+    resize: none;
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out; 
+
+}
+.rawDataText:focus,.standardisedDataBox:focus{
+    color:#000;
+    outline:none;
+    border:#008d8e 1px solid;
+    box-shadow: 0 0 5px rgba(0, 141, 142, 1);
+    -moz-box-shadow: 0 0 5px rgba(0, 141, 142, 1);
+    -webkit-box-shadow: 0 0 5px rgba(0, 141, 142, 1);
+}
+.subRawData, .standardisedData{
+    width: 100%;
+    top: auto;
+    display: inline-block;
+    padding: 20px;
+}
+.dataStandardisers, .data-standardisers{
+    display: inline-block;
+    margin-left: 5%;
+    width: 20%;
+}
+.standardiser-radio, .standardiser-info{
+    vertical-align: top;
+}
+.stnd-rad-fieldset{
+    background-image: linear-gradient(white,#e6e8eb);
+    border-width: 1px;
+    border-color:  rgba(128, 128, 128, 0.300);
+    border-radius: 8px;
+}
+.standardisersApplied{
+    position: sticky;
+    display:inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+    width: 20%;
+}
+.standardiser-applied-head, .standardiser-info-head{
+    margin-left: 5%;
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+}
+.stnd-app-fieldset, .stnd-info-fieldset{
+position: sticky;
+width: 100%;
+margin-left: -1%;
+height: 160px;
+margin-top: 25%;
+vertical-align: top;
+background-image: linear-gradient(white,#e6e8eb);
+border-color: rgba(128, 128, 128, 0.300);
+border-width: 1px;
+border-radius: 8px;
+}
+
