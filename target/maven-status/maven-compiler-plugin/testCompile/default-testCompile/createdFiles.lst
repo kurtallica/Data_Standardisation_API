@@ -1,0 +1,10 @@
+kurt/project/standardise/Controllers/StandardisationControllerTest.class
+kurt/project/standardise/Services/StandardisationServiceTest$2.class
+kurt/project/standardise/Standardisers/RemovePunctuationTest.class
+kurt/project/standardise/Standardisers/RemoveNumbersTest.class
+kurt/project/standardise/Standardisers/ToUpperCaseTest.class
+kurt/project/standardise/Standardisers/ReplaceAccentedCharactersTest.class
+kurt/project/standardise/Services/StandardisationServiceTest.class
+kurt/project/standardise/Services/StandardisationServiceTest$3.class
+kurt/project/standardise/Standardisers/ToLowerCaseTest.class
+kurt/project/standardise/Services/StandardisationServiceTest$1.class

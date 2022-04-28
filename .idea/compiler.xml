@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="data-standardisation-api" />
+        <module name="Data_Standardisation_API" />
       </profile>
     </annotationProcessing>
   </component>

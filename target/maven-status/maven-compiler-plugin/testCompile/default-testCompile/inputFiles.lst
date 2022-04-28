@@ -1,0 +1,7 @@
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Services/StandardisationServiceTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Standardisers/RemoveNumbersTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Standardisers/ToLowerCaseTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Controllers/StandardisationControllerTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Standardisers/ToUpperCaseTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Standardisers/ReplaceAccentedCharactersTest.java
+/home/dev/dev/Data_Standardisation_API/src/test/java/kurt/project/standardise/Standardisers/RemovePunctuationTest.java

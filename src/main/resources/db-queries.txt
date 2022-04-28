@@ -1,0 +1,11 @@
+##MySQL Queries for standing up service##
+
+CREATE TABLE standardise_audit (
+	`record_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+	`date_time` datetime NOT NULL,
+	`term` varchar(100),
+	`standardisation_method` varchar(20) NOT NULL,
+	`output_term` varchar(100),
+	PRIMARY KEY (`record_id`),
+	UNIQUE KEY `record_id` (`record_id`)
+);

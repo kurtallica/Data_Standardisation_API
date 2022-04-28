@@ -34,7 +34,7 @@
         <form class="standardiser-info" id="standardiserInfo">
             <fieldset class="stnd-info-fieldset">
                 <legend>Standardisers To Be Applied</legend>
-                <ul class="standardiser-list" id="standardiserList">
+                <ul class="standardiser-list" id="standardiserList"></ul>
             </fieldset>
             <button type="button" id="apply" onclick="fullStandardise();"> Apply</button>
             <button type="button" onclick="resetPage()"> Reset</button>
@@ -45,7 +45,7 @@
     <div class=standardised>
         <h3>Standardised Data</h3>
         <div class=standardisedData>
-            <label for="standardisedData"></label>
+            <label for="standardisedDataBox"></label>
             <textarea readonly class=standardisedDataBox name="standardisedDataBox" id="standardisedDataBox" cols="30"
                 rows="10" placeholder="Result will display here:"></textarea>
         </div>
@@ -55,7 +55,7 @@
         <fieldset class="stnd-app-fieldset">
             <legend>Standardisers Applied</legend>
             <section>
-                <ul class="standardiser-list" id="standardiserList">
+                <ul class="standardiser-list" id="standardiserListApplied">
                 </ul>
             </section>
         </fieldset>
