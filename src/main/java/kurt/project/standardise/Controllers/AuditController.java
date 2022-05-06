@@ -24,6 +24,7 @@ public class AuditController {
     @ApiOperation(value = "Get one record from the table")
     @GetMapping(value = "/getOneRecord")
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Map<String, Entry> getOneRecord(
             @ApiParam(value = "The audit record to be retrieved", example = "1")
             @RequestParam(value = "id") long id) throws Exception {
@@ -38,6 +39,7 @@ public class AuditController {
     @ApiOperation(value = "Get all records from the table")
     @GetMapping(value = "/get-all-records")
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Map<String, List<?>> getAllRecords() throws Exception {
 
         return Map.of("output", entryRepository.findAll());
@@ -47,6 +49,7 @@ public class AuditController {
     @ApiOperation(value = "Delete one record from the table")
     @DeleteMapping(value = "/deleteRecord")
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void deleteRecord(
             @ApiParam(value = "ID of the audit record to be deleted", example = "1")
             @RequestParam(value = "id") long id) throws Exception {
@@ -62,6 +65,7 @@ public class AuditController {
     @ApiOperation(value = "Update one record from the table")
     @PatchMapping(value = "/updateRecord")
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void updateRecord(
             @ApiParam(value = "ID of the audit record to be updated", example = "1")
             @RequestParam(value = "id") long id,

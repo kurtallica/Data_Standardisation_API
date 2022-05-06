@@ -1,7 +1,7 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   devServer: {
-    proxy: "http://localhost:8081/",
+    proxy: "http://localhost:8080/",
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
