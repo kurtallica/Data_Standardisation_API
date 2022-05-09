@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title> </v-card-title>
-    <v-table fixed-header height="300px">
+    <v-table fixed-header>
       <thead>
         <tr>
           <th v-for="header in headers" :key="header.id">{{ header.text }}</th>

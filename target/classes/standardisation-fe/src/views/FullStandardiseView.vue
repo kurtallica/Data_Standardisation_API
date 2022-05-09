@@ -1,5 +1,12 @@
 <template>
-  <div class="full-standardise">
-    <h1>This is the Full Standardisation page</h1>
-  </div>
+  <full-standardise-service />
 </template>
+<script>
+import FullStandardiseService from "../components/FullStandardiseService.vue";
+
+export default {
+  components: {
+    FullStandardiseService,
+  },
+};
+</script>

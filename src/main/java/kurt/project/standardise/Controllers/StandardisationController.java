@@ -33,6 +33,7 @@ public class StandardisationController {
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
     public String handleException(Exception e){
         LocalDateTime timestamp = LocalDateTime.now();
@@ -48,6 +49,7 @@ public class StandardisationController {
 
     @ApiOperation("Apply single standardiser to term")
     @GetMapping("/single-standardise")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
     public Map<String, String> singleStandardisationOfTerm(
             @ApiParam(value = "The input which will be standardised", example = "Baron Jaè'jebiphè")
@@ -74,6 +76,7 @@ public class StandardisationController {
 
     @ApiOperation(value = "Apply one or more standardisers to term")
     @PostMapping("/multiple-standardise")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
     public Map<String, String> multipleStandardisationOfTerm(
             @ApiParam(value = "A map of String (term) and Object (standardiser) ",
@@ -107,6 +110,7 @@ public class StandardisationController {
     }
 
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ApiOperation(value="apply all standardisers to term")
     @GetMapping("/full-standardise")
     public Map<String, String> fullStandardisationOfTerm(
