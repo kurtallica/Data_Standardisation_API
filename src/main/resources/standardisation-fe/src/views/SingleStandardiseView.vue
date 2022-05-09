@@ -1,5 +1,12 @@
 <template>
-  <div class="single-standardise">
-    <h1>This is the Signle Standardisation page</h1>
-  </div>
+  <single-standardise-service />
 </template>
+<script>
+import SingleStandardiseService from "../components/SingleStandardiseService.vue";
+
+export default {
+  components: {
+    SingleStandardiseService,
+  },
+};
+</script>
