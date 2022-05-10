@@ -1,5 +1,11 @@
 ##MySQL Queries for standing up service##
 
+CREATE DATABASE standardisation_audit;
+
+USE standardisation_audit;
+
+DROP TABLE IF EXISTS standardise_audit;
+
 CREATE TABLE standardise_audit (
 	`record_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
 	`date_time` datetime NOT NULL,
