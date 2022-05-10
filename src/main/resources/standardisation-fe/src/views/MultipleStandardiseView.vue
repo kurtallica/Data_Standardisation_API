@@ -1,5 +1,12 @@
 <template>
-  <div class="multiple-standardise">
-    <h1>This is the Multiple Standardisation page</h1>
-  </div>
+  <multiple-standardise-service />
 </template>
+<script>
+import MultipleStandardiseService from "../components/MultipleStandardiseService.vue";
+
+export default {
+  components: {
+    MultipleStandardiseService,
+  },
+};
+</script>

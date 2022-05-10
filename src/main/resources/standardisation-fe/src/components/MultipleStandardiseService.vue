@@ -34,28 +34,28 @@
           <v-card-subtitle>Standardisers to apply</v-card-subtitle>
 
           <v-switch
-            v-model="toggleStandardiser"
+            v-model="toggleStandardisers"
             color="teal"
             value="toUpperCase"
             label="Upper-Case"
             hide-details=""
           ></v-switch>
           <v-switch
-            v-model="toggleStandardiser"
+            v-model="toggleStandardisers"
             color="teal"
             value="removeNumbers"
             label="Remove Numbers"
             hide-details=""
           ></v-switch>
           <v-switch
-            v-model="toggleStandardiser"
+            v-model="toggleStandardisers"
             color="teal"
             value="removePunctuation"
             label="Remove Punctuation"
             hide-details=""
           ></v-switch>
           <v-switch
-            v-model="toggleStandardiser"
+            v-model="toggleStandardisers"
             color="teal"
             value="replaceAccentedCharacters"
             label="Replace Accented Characters"
@@ -63,7 +63,7 @@
           ></v-switch>
         </v-card>
         <div class="mb-2">
-          <v-btn variant="outlined" color="teal" @click="singleStandardise()"
+          <v-btn variant="outlined" color="teal" @click="multipleStandardise()"
             >Apply</v-btn
           >
           <v-btn variant="outlined" color="teal" @click="resetComponent()"
@@ -75,8 +75,8 @@
         <v-card class="mt-4 ps-3" height="39%">
           <v-card-subtitle>Standardisations Applied</v-card-subtitle>
           <v-list disabled>
-            <v-list-item>
-              <v-list-item-title>{{ standardiserApplied }}</v-list-item-title>
+            <v-list-item v-for="(item, i) in standardisersApplied" :key="i">
+              <v-list-item-title>{{ item }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card>
@@ -94,20 +94,26 @@ export default {
     outputPlaceholder: "Please click apply to view output",
     output: "",
     readonly: true,
-    toggleStandardiser: "",
-    standardiserApplied: "",
+    toggleStandardisers: [],
+    standardisersApplied: [],
   }),
   methods: {
-    singleStandardise() {
-      fetch(
-        `http://localhost:8081/single-standardise?term=${this.input}&standardiserInput=${this.toggleStandardiser}`
-      )
+    multipleStandardise() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          term: this.input,
+          standardisers: this.toggleStandardisers,
+        }),
+      };
+      fetch(`http://localhost:8081/multiple-standardise`, requestOptions)
         .then((response) => response.json())
         .then((response) => {
           this.readonly = false;
           this.output = response.output;
           this.readonly = true;
-          this.standardiserApplied = this.toggleStandardiser;
+          this.standardisersApplied = this.toggleStandardisers;
         })
         .catch((err) => {
           console.log(err.message || err);
@@ -117,7 +123,7 @@ export default {
       this.input = "";
       this.output = "";
       this.standardisersApplied = "";
-      this.toggleStandardiser = "";
+      this.toggleStandardisers = "";
     },
   },
 };
