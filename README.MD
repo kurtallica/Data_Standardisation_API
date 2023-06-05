@@ -48,3 +48,6 @@ The Swagger source JSON can be accessed at
 ``
 http://localhost:8080/v2/api-docs
 ``.
+
+### NOTE
+To use the audit functionality, a mySQL database must be created and stood up.
