@@ -37,17 +37,39 @@ StandardiserName:   {"ToUpperCase", "RemovePunctuation", "RemoveNumbers"}
 Output:             "TUOMAS PETAJA "
 ```
 
+##Setup
+
+1. ensure Postgres db is available 
+2. add following config in src/main/resources/application.properties:
+    ```
+    server.port=8081
+
+    spring.datasource.url=jdbc:postgresql://<HOSTNAME:PORT>/<DB_USER>
+    spring.datasource.username=<DB_USER>
+    spring.datasource.password=<DB_PASS>
+    ```
+2. create audit table (if not already present):
+    ```
+    CREATE TABLE standardise_audit(  
+    record_id int NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    date_time TIMESTAMP NOT NULL,
+    term VARCHAR(255),
+    standardisation_method VARCHAR(255),
+    output_term VARCHAR(255)
+);
+    ```
+3. run mvn spring-boot:run to stand up the spring boot application server (localhost port 8081)
+4. cd ui/standardisation-fe && npm run serve to start the vue.js front-end server
+
+
 ##Swagger
 
 The Swagger UI can be accessed at
 ``
-http://localhost:8080/swagger-ui/
+http://localhost:8081/swagger-ui/index.html
 ``.
 
 The Swagger source JSON can be accessed at
 ``
-http://localhost:8080/v2/api-docs
+http://localhost:8081/v3/api-docs
 ``.
-
-### NOTE
-To use the audit functionality, a mySQL database must be created and stood up.
