@@ -1,8 +1,8 @@
 package kurt.project.standardise.Controllers;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kurt.project.standardise.Model.Entry;
 import kurt.project.standardise.Repository.EntryRepository;
 import kurt.project.standardise.Services.StandardisationService;
@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 
-@Api(
-        description = "Endpoints for partially or fully standardising string input.",
-        tags = {"Standardisation Controller"}
+@Tag(
+    name = "Standardisation Controller",
+    description = "Endpoints for partially or fully standardising string input."
 )
 @RestController
 @AllArgsConstructor
@@ -47,14 +47,14 @@ public class StandardisationController {
                 + e.getMessage();
     }
 
-    @ApiOperation("Apply single standardiser to term")
+        @Operation(summary = "Apply single standardiser to term")
     @GetMapping("/single-standardise")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
     public Map<String, String> singleStandardisationOfTerm(
-            @ApiParam(value = "The input which will be standardised", example = "Baron Jaè'jebiphè")
+            @Parameter(description = "The input which will be standardised", example = "Baron Jaè'jebiphè")
             @RequestParam(required = false, value = "term") String term,
-            @ApiParam(value = "The standardiser to be applied to \"term\"", example = "replaceAccentedCharacters")
+            @Parameter(description = "The standardiser to be applied to \"term\"", example = "replaceAccentedCharacters")
             @RequestParam(value = "standardiserInput") String standardiserInput) throws Exception {
 
         Entry entry = new Entry();
@@ -74,12 +74,12 @@ public class StandardisationController {
         return Map.of(key, standardised);
     }
 
-    @ApiOperation(value = "Apply one or more standardisers to term")
+        @Operation(summary = "Apply one or more standardisers to term")
     @PostMapping("/multiple-standardise")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
     public Map<String, String> multipleStandardisationOfTerm(
-            @ApiParam(value = "A map of String (term) and Object (standardiser) ",
+            @Parameter(description = "A map of String (term) and Object (standardiser)",
                     example = "{\n" +
                             "   \"term\": \"Baron Jaè'jebiphè\", \n" +
                             "   \"standardisers\": \n" +
@@ -111,10 +111,10 @@ public class StandardisationController {
 
     @ResponseBody
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @ApiOperation(value="apply all standardisers to term")
+        @Operation(summary = "Apply all standardisers to term")
     @GetMapping("/full-standardise")
     public Map<String, String> fullStandardisationOfTerm(
-            @ApiParam(value = "The input which will be standardised", example = "Baron9 Jaè'jebiphè")
+            @Parameter(description = "The input which will be standardised", example = "Baron9 Jaè'jebiphè")
             @RequestParam(required = false, value = "term") String term) throws Exception {
 
         Entry entry = new Entry();
