@@ -1,12 +1,12 @@
-#Data Standardisation API
+# Data Standardisation API
 
-##About
+## About
 
 The Data Standardisation API is a micro-service that allows the user to input a String of text
 and apply data standardisation to that text. The service allows the user to choose the level of
 standardisation via the endpoint:
 
-####/fullStandardise
+#### /fullStandardise
 `/fullStandardise` endpoint takes a String to be standardised and applies all available
 data standardisers to the String.
 
@@ -15,7 +15,7 @@ Input:              "Tuomas Petäjä, 21056879"
 Output:             "TUOMAS PETAJA " 
 ```
 
-####/singleStandardise
+#### /singleStandardise
 `/singleStandardise` endpoint takes a String to be standardised and a valid standardiser name,
 then applies the requested data standardiser to the String.
 
@@ -26,7 +26,7 @@ StandardiserName:   "ToUpperCase"
 Output:             "TUOMAS PETAJA, 21056879"
 ```
 
-####/multipleStandardise
+#### /multipleStandardise
 `/multipleStandardise` endpoint takes a map of String to be standardised and an arrayList
 of valid standardiser objects, then applies the requested data standardisers to the String.
 
@@ -37,10 +37,10 @@ StandardiserName:   {"ToUpperCase", "RemovePunctuation", "RemoveNumbers"}
 Output:             "TUOMAS PETAJA "
 ```
 
-##Setup
+## Setup
 
-1. ensure Postgres db is available 
-2. add following config in src/main/resources/application.properties:
+1. Ensure Postgres db is available 
+2. Add the following config in src/main/resources/application.properties:
     ```
     server.port=8081
 
@@ -48,21 +48,21 @@ Output:             "TUOMAS PETAJA "
     spring.datasource.username=<DB_USER>
     spring.datasource.password=<DB_PASS>
     ```
-2. create audit table (if not already present):
+2. Create audit table (if not already present):
     ```
     CREATE TABLE standardise_audit(  
-    record_id int NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    date_time TIMESTAMP NOT NULL,
-    term VARCHAR(255),
-    standardisation_method VARCHAR(255),
-    output_term VARCHAR(255)
-);
+        record_id int NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+        date_time TIMESTAMP NOT NULL,
+        term VARCHAR(255),
+        standardisation_method VARCHAR(255),
+        output_term VARCHAR(255)
+    );
     ```
-3. run mvn spring-boot:run to stand up the spring boot application server (localhost port 8081)
-4. cd ui/standardisation-fe && npm run serve to start the vue.js front-end server
+3. Run `mvn spring-boot:run` to stand up the spring boot application server (localhost port 8081)
+4. Run `cd ui/ && npm run serve` to start the vue.js front-end server
 
 
-##Swagger
+## Swagger
 
 The Swagger UI can be accessed at
 ``
