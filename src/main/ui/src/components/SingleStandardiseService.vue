@@ -100,7 +100,7 @@ export default {
   methods: {
     singleStandardise() {
       fetch(
-        `http://localhost:8081/single-standardise?term=${this.input}&standardiserInput=${this.toggleStandardiser}`
+        `http://localhost:8081/single-standardise?term=${this.input}&standardiserInput=${this.toggleStandardiser}`,
       )
         .then((response) => response.json())
         .then((response) => {
