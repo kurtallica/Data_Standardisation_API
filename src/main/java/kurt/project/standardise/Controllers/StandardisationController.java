@@ -20,31 +20,31 @@ import java.util.Map;
     description = "Endpoints for partially or fully standardising string input."
 )
 @RestController
-@AllArgsConstructor
 public class StandardisationController {
 
-    @Autowired
-    StandardisationService standardisationService;
-
-    @Autowired
-    EntryRepository entryRepository;
+    final StandardisationService standardisationService;
+    final EntryRepository entryRepository;
 
     final String key = "output";
+
+    StandardisationController(StandardisationService standardisationService, EntryRepository entryRepository) {
+        this.standardisationService = standardisationService;
+        this.entryRepository = entryRepository;
+    }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @ResponseBody
-    public String handleException(Exception e){
-        LocalDateTime timestamp = LocalDateTime.now();
+    public Map<String, Object> handleException(Exception e){
         HttpStatus badRequest = HttpStatus.BAD_REQUEST;
 
-        return "Date/Time:\t"
-                + timestamp + "\n"
-                + "Status:\t\t"
-                + badRequest + "\n"
-                + "Exception:\t"
-                + e.getMessage();
+        return Map.of(
+                "timestamp", LocalDateTime.now(),
+                "status", badRequest.value(),
+                "statusText", badRequest.getReasonPhrase(),
+                "exception", e.getMessage()
+        );
     }
 
         @Operation(summary = "Apply single standardiser to term")
@@ -53,25 +53,25 @@ public class StandardisationController {
     @ResponseBody
     public Map<String, String> singleStandardisationOfTerm(
             @Parameter(description = "The input which will be standardised", example = "Baron Jaè'jebiphè")
-            @RequestParam(required = false, value = "term") String term,
+            @RequestParam(required = false) String term,
             @Parameter(description = "The standardiser to be applied to \"term\"", example = "replaceAccentedCharacters")
-            @RequestParam(value = "standardiserInput") String standardiserInput) throws Exception {
+            @RequestParam String standardiserInput) throws Exception {
 
         Entry entry = new Entry();
 
         ArrayList<String> standardiserName = new ArrayList<>();
         standardiserName.add(standardiserInput);
 
-        String standardised = standardisationService.definedStandardisation(term, standardiserName);
+        String standardisedTerm = standardisationService.definedStandardisation(term, standardiserName);
 
         entry.setTerm(term);
         entry.setStandardisation_method("singleStandardise");
-        entry.setOutput_term(standardised);
+        entry.setOutput_term(standardisedTerm);
 
         entryRepository.save(entry);
         entryRepository.flush();
 
-        return Map.of(key, standardised);
+        return Map.of(key, standardisedTerm);
     }
 
         @Operation(summary = "Apply one or more standardisers to term")
@@ -95,18 +95,18 @@ public class StandardisationController {
 
         Entry entry = new Entry();
 
-        String term = (String) standardiserInput.get("term");
+        String term = standardiserInput.get("term").toString();
         ArrayList<String> inputStandardisers = (ArrayList<String>) standardiserInput.get("standardisers");
-        String standardised = standardisationService.definedStandardisation(term, inputStandardisers);
+        String standardisedTerm = standardisationService.definedStandardisation(term, inputStandardisers);
 
         entry.setTerm(term);
         entry.setStandardisation_method("multipleStandardise");
-        entry.setOutput_term(standardised);
+        entry.setOutput_term(standardisedTerm);
 
         entryRepository.save(entry);
         entryRepository.flush();
 
-        return Map.of(key, standardised);
+        return Map.of(key, standardisedTerm);
     }
 
     @ResponseBody
@@ -115,19 +115,19 @@ public class StandardisationController {
     @GetMapping("/full-standardise")
     public Map<String, String> fullStandardisationOfTerm(
             @Parameter(description = "The input which will be standardised", example = "Baron9 Jaè'jebiphè")
-            @RequestParam(required = false, value = "term") String term) throws Exception {
+            @RequestParam(required = false) String term) throws Exception {
 
         Entry entry = new Entry();
 
-        String standardised = standardisationService.fullStandardisation(term);
+        String standardisedTerm = standardisationService.fullStandardisation(term);
 
         entry.setTerm(term);
         entry.setStandardisation_method("fullStandardise");
-        entry.setOutput_term(standardised);
+        entry.setOutput_term(standardisedTerm);
 
         entryRepository.save(entry);
         entryRepository.flush();
 
-        return Map.of(key, standardised);
+        return Map.of(key, standardisedTerm);
     }
 }
