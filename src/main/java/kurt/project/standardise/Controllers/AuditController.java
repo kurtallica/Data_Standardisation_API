@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kurt.project.standardise.Model.Entry;
 import kurt.project.standardise.Repository.EntryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.Map;
 @RestController
 public class AuditController {
 
-    @Autowired
-    private EntryRepository entryRepository;
+    private final EntryRepository entryRepository;
+
+    AuditController(EntryRepository entryRepository) {
+        this.entryRepository = entryRepository;
+    }
 
         @Operation(summary = "Get one record from the table")
     @GetMapping(value = "/getOneRecord")
@@ -27,13 +29,8 @@ public class AuditController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Map<String, Entry> getOneRecord(
             @Parameter(description = "The audit record to be retrieved", example = "1")
-            @RequestParam(value = "id") long id) throws Exception {
-
-        if (entryRepository.getOne(id) == null) {
-            throw new Exception("Record \"" + id + "\" not found");
-        } else {
-            return Map.of("output", entryRepository.getOne(id));
-        }
+            @RequestParam long id) throws Exception {
+        return Map.of("output", entryRepository.getReferenceById(id));
     }
 
     @Operation(summary = "Get all records from the table")
@@ -52,7 +49,7 @@ public class AuditController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void deleteRecord(
             @Parameter(description = "ID of the audit record to be deleted", example = "1")
-            @RequestParam(value = "id") long id) throws Exception {
+            @RequestParam long id) throws Exception {
 
         try {
             entryRepository.deleteById(id);
@@ -68,15 +65,15 @@ public class AuditController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void updateRecord(
             @Parameter(description = "ID of the audit record to be updated", example = "1")
-            @RequestParam(value = "id") long id,
+            @RequestParam long id,
             @Parameter(description = "The input String to be standardised", example = "Tuomas Petäjä, 21056879")
-            @RequestParam(required = false, value = "term") String term,
+            @RequestParam(required = false) String term,
             @Parameter(description = "The standardisation service method to be used", example = "singleStandardise")
-            @RequestParam(required = false, value = "standardisation_method") String standardiseMethod,
+            @RequestParam(required = false) String standardiseMethod,
             @Parameter(description = "The input string in standardised format", example = "TUOMAS PETÄJÄ, 21056879")
-            @RequestParam(required = false, value = "output_term") String outputTerm) throws Exception {
+            @RequestParam(required = false) String outputTerm) throws Exception {
 
-        Entry entry = entryRepository.getOne(id);
+        Entry entry = entryRepository.getReferenceById(id);
 
         if (term != null) {
             entry.setTerm(term);
